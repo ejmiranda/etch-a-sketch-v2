@@ -18,7 +18,7 @@ window.addEventListener('resize', updateMeasures);
 function updateMeasures () {
   gHeight = window.innerHeight - measuresDiv.offsetHeight;
   gWidth = window.innerWidth;
-  cellSize = Math.max(gHeight, gWidth)/100;
+  cellSize = gWidth/50;
   heightP.textContent = `Grid Height = ${gHeight}px`;
   widthP.textContent = `Grid Width = ${gWidth}px`;
   cellSizeP.textContent = `Cell Size = ${cellSize}px`;
@@ -28,12 +28,13 @@ function getCellCount() {
   return grid.children.length;
 }
 
-drawBtn.addEventListener('click', (event) => {
-  let cell = document.createElement('div');
-  cell.classList.add('cell');
-  cell.style.height = '10px';
-  cell.style.width = '10px';
-  grid.appendChild(cell);
-  console.log(getCellCount());
-  cellCountP.textContent = `Cell Count = ${getCellCount()}`;
+drawBtn.addEventListener('click', () => {
+  for (let i=0; i<2; i++) {
+    let cell = document.createElement('div');
+    cell.classList.add('cell');
+    cell.style.height = `${30}px`;
+    // cell.style.width = `${30}px`;
+    grid.appendChild(cell);
+    cellCountP.textContent = `Cell Count = ${getCellCount()}`;
+  }
 });

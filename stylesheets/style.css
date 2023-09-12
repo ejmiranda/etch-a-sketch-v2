@@ -20,6 +20,7 @@ button {
 .grid {
   background-color: red;
   display: flex;
+  flex-direction: row;
 }
 
 .cell {
