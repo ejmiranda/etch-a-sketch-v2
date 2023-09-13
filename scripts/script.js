@@ -14,12 +14,15 @@ let cellSize = 30;
 let cellQty;
 
 window.addEventListener('load', loadGrid);
-window.addEventListener('resize', updateMeasures);
+window.addEventListener('resize', loadGrid);
 resetBtn.addEventListener('click', unloadGrid);
 
 function loadGrid() {
   getMeasures();
   let cellQty = (gHeight/cellSize) * (gWidth/cellSize);
+  if (grid.hasChildNodes()) {
+    cellQty -= getCellCount();
+  }
   for (let i = 0; i < cellQty; i++) {
     let cell = document.createElement('div');
     cell.classList.add('cell');
