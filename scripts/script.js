@@ -19,7 +19,7 @@ resetBtn.addEventListener('click', unloadGrid);
 
 function loadGrid() {
   getMeasures();
-  let cellQty = (gHeight/cellSize) * (gWidth/cellSize);
+  let cellQty = Math.floor(gHeight/cellSize) * Math.floor(gWidth/cellSize);
   if (grid.hasChildNodes()) {
     cellQty -= getCellCount();
   }
