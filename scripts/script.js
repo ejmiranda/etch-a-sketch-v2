@@ -12,19 +12,12 @@ let gHeight;
 let gWidth;
 let cellSize = 30;
 
-window.addEventListener('load', updateMeasures);
+window.addEventListener('load', loadGrid);
 window.addEventListener('resize', updateMeasures);
-drawBtn.addEventListener('click', fillGrid);
+drawBtn.addEventListener('click', unloadGrid);
 
-function updateMeasures () {
-  gHeight = window.innerHeight - measuresDiv.offsetHeight;
-  gWidth = window.innerWidth;
-  heightP.textContent = `Grid Height = ${gHeight}px`;
-  widthP.textContent = `Grid Width = ${gWidth}px`;
-  cellSizeP.textContent = `Cell Size = ${cellSize}px`;
-}
-
-function fillGrid() {
+function loadGrid() {
+  updateMeasures();
   let cellQty = (gHeight/cellSize) * (gWidth/cellSize);
   for (let i = 0; i < cellQty; i++) {
     let cell = document.createElement('div');
@@ -36,10 +29,20 @@ function fillGrid() {
   }
 }
 
+function updateMeasures () {
+  gHeight = window.innerHeight - measuresDiv.offsetHeight;
+  gWidth = window.innerWidth;
+  heightP.textContent = `Grid Height = ${gHeight}px`;
+  widthP.textContent = `Grid Width = ${gWidth}px`;
+  cellSizeP.textContent = `Cell Size = ${cellSize}px`;
+}
+
 function getCellCount() {
   return grid.children.length;
 }
 
-function clearGrid() {
-   
+function unloadGrid() {
+  while (grid.hasChildNodes()) {
+    grid.removeChild(grid.firstChild);
+  }  
 }
