@@ -20,7 +20,7 @@ button {
 .grid {
   background-color: red;
   display: flex;
-  flex-direction: row;
+  flex-flow: row wrap;
 }
 
 .cell {
