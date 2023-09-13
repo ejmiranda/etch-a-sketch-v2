@@ -56,3 +56,8 @@ function unloadGrid() {
   }  
   updateMeasures();
 }
+
+function resetGrid() {
+  unloadGrid();
+  loadGrid();
+}
