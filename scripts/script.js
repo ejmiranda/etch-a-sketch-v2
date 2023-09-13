@@ -39,3 +39,7 @@ function fillGrid() {
 function getCellCount() {
   return grid.children.length;
 }
+
+function clearGrid() {
+   
+}
