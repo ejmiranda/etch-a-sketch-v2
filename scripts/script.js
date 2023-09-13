@@ -10,7 +10,7 @@ const cell = document.querySelector('.cell');
 
 let gHeight;
 let gWidth;
-let cellSize = 30;
+let cellSize = 20;
 let cellQty;
 
 window.addEventListener('load', loadGrid);
@@ -23,12 +23,10 @@ function loadGrid() {
   if (grid.hasChildNodes()) {
     cellQty -= getCellCount();
   }
-  for (let i = 0; i < cellQty; i++) {
-    let cell = document.createElement('div');
-    cell.classList.add('cell');
-    cell.style.height = `${cellSize}px`;
-    cell.style.width = `${cellSize}px`;
-    grid.appendChild(cell);
+  if (cellQty > 0) {
+    addCells(cellQty);
+  } else {
+    removeCells(cellQty);
   }
   updateMeasures();
 }
@@ -38,26 +36,40 @@ function getMeasures() {
   gWidth = window.innerWidth;
 }
 
+function getCellCount() {
+  return grid.children.length;
+}
+
+function addCells(cellQty) {
+  for (let i = 0; i < cellQty; i++) {
+    let cell = document.createElement('div');
+    cell.classList.add('cell');
+    cell.style.height = `${cellSize}px`;
+    cell.style.width = `${cellSize}px`;
+    grid.appendChild(cell);
+  }
+}
+
+function removeCells(cellQty) {
+  for (let i = 0; i < (cellQty * -1); i++) {
+    grid.removeChild(grid.lastChild);
+  }
+}
+
 function updateMeasures () {
-  getMeasures();
   heightP.textContent = `Grid Height = ${gHeight}px`;
   widthP.textContent = `Grid Width = ${gWidth}px`;
   cellSizeP.textContent = `Cell Size = ${cellSize}px`;
   cellCountP.textContent = `Cell Count = ${getCellCount()}`
 }
 
-function getCellCount() {
-  return grid.children.length;
+function resetGrid() {
+  unloadGrid();
+  loadGrid();
 }
 
 function unloadGrid() {
   while (grid.hasChildNodes()) {
     grid.removeChild(grid.firstChild);
-  }  
-  updateMeasures();
-}
-
-function resetGrid() {
-  unloadGrid();
-  loadGrid();
+  }
 }
