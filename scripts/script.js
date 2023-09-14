@@ -50,6 +50,9 @@ function addCells(cellQty) {
     cell.classList.add('cell');
     cell.style.height = `${cellSize}px`;
     cell.style.width = `${cellSize}px`;
+    cell.addEventListener('mouseover', (event) => {
+      colorCell(event.target);
+    });
     grid.appendChild(cell);
   }
 }
@@ -76,4 +79,8 @@ function unloadGrid() {
   while (grid.hasChildNodes()) {
     grid.removeChild(grid.firstChild);
   }
+}
+
+function colorCell(cell) {
+  cell.style.backgroundColor = `red`;
 }
