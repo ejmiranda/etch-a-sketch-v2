@@ -29,6 +29,10 @@ function loadGrid() {
     removeCells(cellQty);
   }
   updateMeasures();
+
+  // Center vertically by making the top and bottom margins equal.
+  grid.style.marginTop = `${(gHeight - grid.offsetHeight) / 2}px`;
+
 }
 
 function getMeasures() {
