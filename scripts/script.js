@@ -15,7 +15,7 @@ let cellQty;
 
 window.addEventListener('load', loadGrid);
 window.addEventListener('resize', loadGrid);
-resetBtn.addEventListener('click', unloadGrid);
+resetBtn.addEventListener('click', resetGrid);
 
 function loadGrid() {
   getMeasures();
@@ -82,5 +82,6 @@ function unloadGrid() {
 }
 
 function colorCell(cell) {
+  console.log(cell.style.backgroundColor);
   cell.style.backgroundColor = `red`;
 }
