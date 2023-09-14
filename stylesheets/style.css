@@ -16,7 +16,7 @@ body {
 }
 
 .measures p {
-  color: #F4F4F4;
+  color: white;
 }
 
 button {
@@ -37,6 +37,5 @@ button:hover {
 }
 
 .cell {
-  background-color: #F4F4F4;
   border: 1px solid #DDDFDE;
 }

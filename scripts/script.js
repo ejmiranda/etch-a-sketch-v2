@@ -50,6 +50,7 @@ function addCells(cellQty) {
     cell.classList.add('cell');
     cell.style.height = `${cellSize}px`;
     cell.style.width = `${cellSize}px`;
+    cell.style.backgroundColor = `rgb(255, 255, 255)`;
     cell.addEventListener('mouseover', (event) => {
       colorCell(event.target);
     });
@@ -82,6 +83,6 @@ function unloadGrid() {
 }
 
 function colorCell(cell) {
-  console.log(cell.style.backgroundColor);
-  cell.style.backgroundColor = `red`;
+  console.log(cell.style.backgroundColor.green);
+  // cell.style.backgroundColor = `rgb(155, 102, 102)`;
 }
