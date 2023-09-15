@@ -20,14 +20,11 @@ body {
 }
 
 button {
+  background-color: #FFFF00;
   border: 1px solid darkgray;
   border-radius: 4px;
   cursor: pointer;
   padding: 3px 15px;
-}
-
-button:hover {
-  background-color: #FFFF00;
 }
 
 .grid {
