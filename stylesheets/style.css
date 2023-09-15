@@ -19,6 +19,10 @@ body {
   color: white;
 }
 
+#logo {
+  height: 75px;
+}
+
 button {
   background-color: #FFFF00;
   border: 1px solid darkgray;

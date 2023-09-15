@@ -28,11 +28,11 @@ function loadGrid() {
   } else {
     removeCells(cellQty);
   }
-  updateMeasures();
 
   // Center vertically by making the top and bottom margins equal.
   grid.style.marginTop = `${(gHeight - grid.offsetHeight) / 2}px`;
 
+  updateMeasures();
 }
 
 function getMeasures() {
@@ -50,7 +50,7 @@ function addCells(cellQty) {
     cell.classList.add('cell');
     cell.style.height = `${cellSize}px`;
     cell.style.width = `${cellSize}px`;
-    cell.style.backgroundColor = `rgb(255, 255, 255)`;
+    cell.style.backgroundColor = 'rgb(255, 255, 255)';
     cell.addEventListener('mouseover', (event) => {
       colorCell(event.target);
     });
@@ -65,7 +65,9 @@ function removeCells(cellQty) {
 }
 
 function updateMeasures () {
-  heightP.textContent = `Grid Height = ${gHeight}px`;
+  // grid.style.marginTop comes in this format: '9px';
+  let marginTop = +grid.style.marginTop.slice(0, grid.style.marginTop.length - 2);
+  heightP.textContent = `Grid Height = ${gHeight - (marginTop * 2)}px`;
   widthP.textContent = `Grid Width = ${gWidth}px`;
   cellSizeP.textContent = `Cell Size = ${cellSize}px`;
   cellCountP.textContent = `Cell Count = ${getCellCount()}`
@@ -83,6 +85,31 @@ function unloadGrid() {
 }
 
 function colorCell(cell) {
-  console.log(cell.style.backgroundColor.green);
-  // cell.style.backgroundColor = `rgb(155, 102, 102)`;
+  let RGBString;
+  let RGBArray = getRGBArrayFromString(cell.style.backgroundColor);
+  if (RGBArray[0] === 0 && RGBArray[1] === 0 && RGBArray[2] === 0) {
+    return;
+  } else if (RGBArray[0] === 255 && RGBArray[1] === 255 && RGBArray[2] === 255) {
+    let red = getRandomIntInclusive(0, 254);
+    let green = getRandomIntInclusive(0, 254);
+    let blue = getRandomIntInclusive(0, 254);
+    RGBString = `rgb(${red}, ${green}, ${blue})`; 
+  } else {
+    RGBString = `rgb(${RGBArray[0]-25.50}, ${RGBArray[1]-25.50}, ${RGBArray[2]-25.50})`; 
+  }
+  cell.style.backgroundColor = RGBString;
+}
+
+function getRGBArrayFromString(RGBstring) {
+  let RGBStringArray = RGBstring.slice(4, RGBstring.length - 1).split(", ");
+  return RGBStringArray.map(Number); 
+}
+
+// From https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random#getting_a_random_number_between_two_values
+
+function getRandomIntInclusive(min, max) {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  // The maximum is inclusive and the minimum is inclusive
+  return Math.floor(Math.random() * (max - min + 1) + min); 
 }
