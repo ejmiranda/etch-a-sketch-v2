@@ -1,4 +1,4 @@
-const measuresDiv = document.querySelector('.measures');
+const headerDiv = document.querySelector('.header');
 const heightP = document.querySelector('.height');
 const widthP = document.querySelector('.width');
 const cellSizeP = document.querySelector('.cell-size');
@@ -36,7 +36,7 @@ function loadGrid() {
 }
 
 function getMeasures() {
-  gHeight = window.innerHeight - measuresDiv.offsetHeight;
+  gHeight = window.innerHeight - headerDiv.offsetHeight;
   gWidth = window.innerWidth;
 }
 

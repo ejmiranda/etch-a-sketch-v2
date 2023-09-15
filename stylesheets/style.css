@@ -6,13 +6,19 @@ body {
   background-color: #F4F4F4;
 }
 
-.measures {
+.header {
   background-color: #FC0D1B;
-  padding: 8px 5px 5px 5px;
+  padding: 10px 15px;
   display: flex;
-  justify-content: center;
   align-items: center;
-  gap: 30px;
+}
+
+.measures {
+  font-size: 11px;
+  width: 125px;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
 }
 
 .measures p {
@@ -20,15 +26,19 @@ body {
 }
 
 #logo {
-  height: 75px;
+  height: 70px;
+  margin: auto;
 }
 
-button {
+#reset {
   background-color: #FFFF00;
   border: 1px solid darkgray;
   border-radius: 4px;
   cursor: pointer;
+  font-size: 14px;
   padding: 3px 15px;
+  width: 75px;
+  margin: 0 0 0 50px;
 }
 
 .grid {
