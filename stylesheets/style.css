@@ -4,6 +4,8 @@ html {
 
 body {
   background-color: #F4F4F4;
+  overflow-y: hidden; /* Hide vertical scrollbar */
+  overflow-x: hidden; /* Hide horizontal scrollbar */
 }
 
 .header {
